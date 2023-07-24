@@ -1,0 +1,86 @@
+# This chart is based on the main artifactory chart with some customizations.
+# See all supported configuration keys in https://github.com/jfrog/charts/tree/master/stable/artifactory
+
+## Role Based Access Control
+rbac:
+  create: true
+  role:
+    ## Rules to create. It follows the role specification
+    rules:
+    - apiGroups:
+      - "*"
+      resources:
+      - "*"
+      verbs:
+      - "*"
+      subjects:
+      - kind: User
+        name: artifactory
+        api_group: rbac.authorization.k8s.io
+        namespace: artifactory
+## Service Account
+serviceAccount:
+  create: true
+  name: artifactory
+  annotations: 
+    kubernetes.io/service-account.name: artifactory
+## Artifactory
+artifactory:
+  image:
+    registry: releases-docker.jfrog.io
+    repository: jfrog/artifactory-oss
+  persistence:
+    size: 50Gi
+  resources:
+    requests:
+      memory: "4Gi"
+      cpu: "2"
+    limits:
+      memory: "8Gi"
+      cpu: "6"
+    javaOpts:
+      xms: "4g"
+      xmx: "6g"
+## Nginx
+nginx:
+  enabled: true
+  service:
+    ssloffload: true
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+      service.beta.kubernetes.io/aws-load-balancer-internal: "true"  
+      service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
+      service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "3600"
+      service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+      service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: "Environment=Dev,Project_Name=artifactory-terraform-eks-cluster"
+    externalTrafficPolicy: Local
+    http:
+      enabled: true
+      externalPort: 80
+      internalPort: 80
+    https:
+      enabled: true
+      externalPort: 443
+      internalPort: 443
+    labels:
+      app: artifactory-nginx
+## Ingress
+ingress:
+  enabled: false
+## PostgreSQL
+postgresql:
+  enabled: true
+  image:
+    registry: releases-docker.jfrog.io
+    repository: bitnami/postgresql
+    tag: 13.9.0-debian-11-r11
+  labels:
+    app: artifactory-postgresql
+  ## This key is required for upgrades to protect old PostgreSQL chart's breaking changes.
+  databaseUpgradeReady: "yes"
+  ## If NOT using the PostgreSQL in this chart (artifactory.postgresql.enabled=false),
+  ## specify custom database details here or leave empty and Artifactory will use embedded derby.
+  # database:
+  jfconnect:
+    enabled: false
