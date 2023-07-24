@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  vault-container:
+    container_name: vault
+    build: .
+    volumes:
+      - /home/ec2-user/vault/home:/home/vault
+      - /home/ec2-user/vault/logs:/home/vault/logs
+      - /home/ec2-user/vault/data:/home/vault/data
+      - /home/ec2-user/vault-terraform-aws/config:/home/vault/config
+    ports:
+      - 8080:8080
+    cap_add:
+      - IPC_LOCK
+    tty: true
+    logging:
+      options:
+        max-size: "10mb"
