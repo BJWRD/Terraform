@@ -11,7 +11,6 @@ resource "random_password" "rancher_bootstrap" {
 # Creates the Rancher instance itself on the cluster, and gives it both a default initial password and a hostname
 resource "helm_release" "rancher" {
   name             = "rancher"
-  version          = "2.7.5"
   create_namespace = "true"
   namespace        = "cattle-system"
 

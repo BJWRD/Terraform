@@ -21,6 +21,9 @@ variable "cluster_version" {
 variable "cluster_endpoint_public_access_cidrs" {
   description = "A list of CIDRs to allow access to the kubernetes control plane"
   type        = list(string)
+
+  default = [
+  "0.0.0.0/0"]
 }
 
 variable "cidr_block" {

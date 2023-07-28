@@ -25,7 +25,6 @@ provider "rancher2" {
   api_url   = "https://${kubernetes_config_map.cluster-info.data["ingress_hostname"]}"
   bootstrap = true
   insecure  = true
-  ca_certs  = "" //data.kubernetes_secret.rancher_ca_cert.data["tls.crt"] 
 }
 
 module "eks_cluster" {
@@ -110,7 +109,7 @@ module "network" {
   tags = local.tags
 }
 
-# Calls the autoscaler module, which adds a Helm Autobalancer to the cluster
+# Calls the autoscaler module, which adds a Helm Autoscaler to the cluster
 module "autoscaler" {
   source                    = "./modules/autoscaler"
   cluster_id                = module.eks_cluster.cluster_id
