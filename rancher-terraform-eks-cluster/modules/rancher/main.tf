@@ -1,5 +1,5 @@
 ###########################################################################################################
-# Rancher Deployment Module [Missing Certificate]
+# Rancher Deployment Module
 ###########################################################################################################
 
 # Generates a random password to be used for setting up a login
