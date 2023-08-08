@@ -67,12 +67,13 @@ Check the K8s infrastructure deployment status, by enter the following commands 
 #### 3. Verify Application accessibility 
 Access the respective Application DNS's below -
 
-rancher.kubestack.com
-harbor.kubestack.com
-keycloak.kubestack.com
-grafana.kubestack.com
-prometheus.kubestack.com
+``rancher.kubestack.com``
+``harbor.kubestack.com``
+``keycloak.kubestack.com``
+``grafana.kubestack.com``
+``prometheus.kubestack.com``
 
+**NOTE:** Ensure the Route53 DNS record entered, includes the latest LB URL
 
 ## Teardown Steps
 
