@@ -87,9 +87,12 @@ prometheus.kubestack.com
 ## Providers
 | Name          | Version       |
 | ------------- |:-------------:|
-| [aws](https://registry.terraform.io/providers/hashicorp/aws)           | ~>3.50.0      |
+| [aws](https://registry.terraform.io/providers/hashicorp/aws)           | ~>4.50.0      |
 | [kubernetes](https://registry.terraform.io/providers/hashicorp/aws)           | ~>2.10.0      |
 | [helm](https://registry.terraform.io/providers/hashicorp/aws)           | >2.4.0      |
+| [keycloak](https://registry.terraform.io/providers/hashicorp/aws)           | ~>4.3.1      |
+| [rancher2](https://registry.terraform.io/providers/hashicorp/aws)           | ~>3.0.1      |
+| [harbor](https://registry.terraform.io/providers/hashicorp/aws)           | >3.9.4      |
 
 ## Modules
 | Name          | Version       |
@@ -98,14 +101,15 @@ prometheus.kubestack.com
 | [rancher](https://registry.terraform.io/providers/hashicorp/aws)           | ~>      |
 | [ingress](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
 | [network](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
-| [autoscaler](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
+| [keycloak](https://registry.terraform.io/providers/hashicorp/aws)           | ~>      |
+| [harbor](https://registry.terraform.io/providers/hashicorp/aws)           | ~>      |
+| [prometheus](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
+| [grafana](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
 
 ## Data Blocks
 | Name          | Type       |
 | ------------- |:-------------:|
-| [aws_eks_cluster_auth](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_subnet) | Data |
-| [aws_region](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_subnet) | Data |
-| [kubernetes_service](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_subnet) | Data |
+| [aws_eks_cluster_auth](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_eks_cluster_auth) | Data |
 
 ## Resources
 | Name          | Type       |
@@ -113,6 +117,7 @@ prometheus.kubestack.com
 | [aws_vpc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_vpc) | Data |
 | [aws_subnet](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_subnet) | Data |
 | [aws_internet_gateway](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_internet_gateway) | resource |
+| [aws_eip](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_eip) | resource |
 | [aws_nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_nat_gateway) | resource |
 | [aws_route_table](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_route_table) | resource |
 | [aws_route_table_association](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_route_table_association) | resource |
@@ -120,6 +125,10 @@ prometheus.kubestack.com
 | [aws_route53_record](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_route53_record) | resource |
 | [kubernetes_config_map](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_lb) | resource |
 | [helm_release](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_lb_listener) | resource |
+| [random_password](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/random_password) | resource |
+| [kubernetes_secret](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kubernetes_secret) | resource |
+| [rancher2_bootstrap](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rancher2_bootstrap) | resource |
+| [time_sleep](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/time_sleep) | resource |
 
 
 
