@@ -2,7 +2,7 @@
 A Rancher EKS Cluster using Helm Charts for deployment - provisioned via IAC (Terraform).
 
 # Architecture
-Enter Image
+![image](https://github.com/BJWRD/Terraform/assets/83971386/c934d634-4ce9-4bfc-83cd-cfc899cccb53)
 
 
 # Prerequisites
@@ -61,13 +61,11 @@ Check the K8s infrastructure deployment status, by enter the following commands 
     aws eks update-kubeconfig --name Rancher-Cluster && kubectl get all --all-namespaces
 
 #### 3. Verify Application accessibility 
-Access the ALB's URL and search this within your browser to access the Rancher application -
+Access the respective Application DNS below -
 
+`rancher.terraform-eks-cluster.com`
 
-Enter Image
-
-OR access the application via the following DNS - `rancher.terraform-eks-cluster.com` (As long as you have the necessary DNS Records entered).
-
+**NOTE:** Ensure the Route53 DNS record entered, includes the latest LB URL
 
 ## Teardown Steps
 
@@ -85,6 +83,7 @@ OR access the application via the following DNS - `rancher.terraform-eks-cluster
 | [aws](https://registry.terraform.io/providers/hashicorp/aws)           | ~>3.50.0      |
 | [kubernetes](https://registry.terraform.io/providers/hashicorp/aws)           | ~>2.10.0      |
 | [helm](https://registry.terraform.io/providers/hashicorp/aws)           | >2.4.0      |
+| [rancher2](https://registry.terraform.io/providers/hashicorp/aws)           | ~>3.0.1      |
 
 ## Modules
 | Name          | Version       |
@@ -98,9 +97,7 @@ OR access the application via the following DNS - `rancher.terraform-eks-cluster
 ## Data Blocks
 | Name          | Type       |
 | ------------- |:-------------:|
-| [aws_eks_cluster_auth](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_subnet) | Data |
-| [aws_region](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_subnet) | Data |
-| [kubernetes_service](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_subnet) | Data |
+| [aws_eks_cluster_auth](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_eks_cluster_auth) | Data |
 
 ## Resources
 | Name          | Type       |
@@ -108,6 +105,7 @@ OR access the application via the following DNS - `rancher.terraform-eks-cluster
 | [aws_vpc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_vpc) | Data |
 | [aws_subnet](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_subnet) | Data |
 | [aws_internet_gateway](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_internet_gateway) | resource |
+| [aws_eip](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_eip) | resource |
 | [aws_nat_gateway](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_nat_gateway) | resource |
 | [aws_route_table](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_route_table) | resource |
 | [aws_route_table_association](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_route_table_association) | resource |
@@ -115,6 +113,10 @@ OR access the application via the following DNS - `rancher.terraform-eks-cluster
 | [aws_route53_record](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_route53_record) | resource |
 | [kubernetes_config_map](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_lb) | resource |
 | [helm_release](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/aws_lb_listener) | resource |
+| [random_password](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/random_password) | resource |
+| [kubernetes_secret](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kubernetes_secret) | resource |
+| [rancher2_bootstrap](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rancher2_bootstrap) | resource |
+| [time_sleep](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/time_sleep) | resource |
 
 
 

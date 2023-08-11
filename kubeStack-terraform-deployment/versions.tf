@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~>1.5.2"
+  required_version = "~>1.5.6"
 
   required_providers {
     aws = {
@@ -17,15 +17,25 @@ terraform {
       version = ">= 2.10.0"
     }
 
+    keycloak = {
+      source  = "mrparkers/keycloak"
+      version = ">= 4.3.1"
+    }
+
     rancher2 = {
       source  = "rancher/rancher2"
-      version = "3.0.2"
+      version = ">= 3.0.1"
+    }
+    
+    harbor = {
+      source = "goharbor/harbor"
+      version = ">= 3.9.4"
     }
 
   }
 
   backend "s3" {
-    bucket = "rancher-terraform-eks-cluster"
+    bucket = "kubeStack-terraform-deployment"
     key    = "terraform.tfstate"
     region = "eu-west-2"
   }
