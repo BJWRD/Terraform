@@ -96,6 +96,15 @@ module "rancher" {
   ]
 }
 
+# Calls the rancher-monitoring module, used to provide us with a system alerting tool.
+module "rancher-monitoring" {
+  source   = "./modules/rancher-monitoring"
+
+  depends_on = [
+    module.eks_cluster
+  ]
+}
+
 # Calls the keycloak module, used to add software to the EKS Cluster within the AWS deployment
 module "keycloak" {
   source   = "./modules/keycloak"
@@ -109,30 +118,15 @@ module "keycloak" {
 # Calls the harbor module, used to add software to the EKS Cluster within the AWS deployment
 module "harbor" {
   source   = "./modules/harbor"
-  # Note - We require access from the VPC CIDR Block so that the Network Load Balancer can perform health checks.
-  access_cidrs      = concat(var.cluster_endpoint_public_access_cidrs, var.nginx_additional_access_cidrs, [var.cidr_block, format("%s/32", join(",", module.network.external_nat_ip))])
 
   depends_on = [
     module.eks_cluster
   ]
 }
 
-# Calls the grafana module, used to provide us with a visual monitoring tool
-module "grafana" {
-  source   = "./modules/grafana"
-  # Note - We require access from the VPC CIDR Block so that the Network Load Balancer can perform health checks.
-  access_cidrs      = concat(var.cluster_endpoint_public_access_cidrs, var.nginx_additional_access_cidrs, [var.cidr_block, format("%s/32", join(",", module.network.external_nat_ip))])
-
-  depends_on = [
-    module.eks_cluster
-  ]
-}
-
-# Calls the prometheus module, used to provide us with a system alerting tool.
-module "prometheus" {
-  source   = "./modules/prometheus"
-  # Note - We require access from the VPC CIDR Block so that the Network Load Balancer can perform health checks.
-  access_cidrs      = concat(var.cluster_endpoint_public_access_cidrs, var.nginx_additional_access_cidrs, [var.cidr_block, format("%s/32", join(",", module.network.external_nat_ip))])
+# Calls the vault module, used to provide us with a Secret management system.
+module "rancher-monitoring" {
+  source   = "./modules/vault"
 
   depends_on = [
     module.eks_cluster
