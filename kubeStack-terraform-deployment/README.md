@@ -1,9 +1,8 @@
 # kubeStack-terraform-deployment
-A EKS Cluster using Helm Charts Rancher, Keycloak, Harbor, Grafana and Prometheus for multi-deployment - provisioned via IAC (Terraform).
+A EKS Cluster using Helm Charts Rancher, Rancher-Monitoring (Grafana/Prometheus), Keycloak, Harbor, and Hashicorp Vault for multi-deployment - provisioned via IAC (Terraform).
 
 # Architecture
-Enter Image
-
+![image](https://github.com/BJWRD/Terraform/assets/83971386/83e6b6a9-e002-48af-b5a0-44b1bf463aee)
 
 # Prerequisites
 * An AWS Account with an IAM user capable of creating resources – `AdminstratorAccess`
@@ -70,8 +69,7 @@ Access the respective Application DNS's below -
 ``rancher.kubestack.com``
 ``harbor.kubestack.com``
 ``keycloak.kubestack.com``
-``grafana.kubestack.com``
-``prometheus.kubestack.com``
+``vault.kubestack.com``
 
 **NOTE:** Ensure the Route53 DNS record entered, includes the latest LB URL
 
@@ -104,8 +102,8 @@ Access the respective Application DNS's below -
 | [network](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
 | [keycloak](https://registry.terraform.io/providers/hashicorp/aws)           | ~>      |
 | [harbor](https://registry.terraform.io/providers/hashicorp/aws)           | ~>      |
-| [prometheus](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
-| [grafana](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
+| [rancher-monitoring](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
+| [vault](https://registry.terraform.io/providers/hashicorp/aws)           | ~>    |
 
 ## Data Blocks
 | Name          | Type       |
