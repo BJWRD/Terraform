@@ -13,7 +13,7 @@ To explore the Terraform deployments in this repository, follow these steps:
   
 #### 3. Choose one of the available deployments from the list below and follow the instructions provided in their respective directories:
 
-* [kubeStack-terraform-deployment](https://github.com/BJWRD/Terraform/kubeStack-terraform-deployment): `An EKS Cluster using Rancher, Keycloak, Harbor, Grafana, & Prometheus Helm Charts for a multi-deployment - provisioned via IAC (Terraform)`
+* [kubeStack-terraform-deployment](https://github.com/BJWRD/Terraform/kubeStack-terraform-deployment): `An EKS Cluster using Rancher, Keycloak, Harbor, Grafana, Prometheus, & Hashicorp Vault Helm Charts for a multi-deployment - provisioned via IAC (Terraform)`
 
 * [rancher-terraform-eks-cluster](https://github.com/BJWRD/Terraform/rancher-terraform-eks-cluster): `A Rancher EKS Cluster using Helm Charts for deployment - provisioned via IAC (Terraform)`
 
