@@ -105,6 +105,15 @@ module "rancher-monitoring" {
   ]
 }
 
+# Calls the rancher-monitoring-crd module, used to provide us with a system alerting tool CRDs.
+module "rancher-monitoring-crd" {
+  source   = "./modules/rancher-monitoring-crd"
+
+  depends_on = [
+    module.eks_cluster
+  ]
+}
+
 # Calls the keycloak module, used to add software to the EKS Cluster within the AWS deployment
 module "keycloak" {
   source   = "./modules/keycloak"
@@ -125,7 +134,7 @@ module "harbor" {
 }
 
 # Calls the vault module, used to provide us with a Secret management system.
-module "rancher-monitoring" {
+module "vault" {
   source   = "./modules/vault"
 
   depends_on = [
