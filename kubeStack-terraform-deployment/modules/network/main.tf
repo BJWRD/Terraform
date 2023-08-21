@@ -127,6 +127,7 @@ resource "aws_route53_record" "harbor" {
   type    = "CNAME"
   ttl     = "300"
   records = ["Enter the Load Balancer DNS here"]
+}
 
 #Route53 DNS CNAME Record - Keycloak
 resource "aws_route53_record" "keycloak" {
@@ -135,6 +136,7 @@ resource "aws_route53_record" "keycloak" {
   type    = "CNAME"
   ttl     = "300"
   records = ["Enter the Load Balancer DNS here"]
+}
 
 #Route53 DNS CNAME Record - Grafana
 resource "aws_route53_record" "grafana" {
