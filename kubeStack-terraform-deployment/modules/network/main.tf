@@ -143,6 +143,7 @@ resource "aws_route53_record" "grafana" {
   type    = "CNAME"
   ttl     = "300"
   records = ["Enter the Load Balancer DNS here"]
+}
 
 #Route53 DNS CNAME Record - Prometheus
 resource "aws_route53_record" "prometheus" {
