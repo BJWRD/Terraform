@@ -26,16 +26,16 @@ terraform {
       source  = "rancher/rancher2"
       version = ">= 3.0.1"
     }
-    
+
     harbor = {
-      source = "goharbor/harbor"
+      source  = "goharbor/harbor"
       version = ">= 3.9.4"
     }
 
   }
 
   backend "s3" {
-    bucket = "kubeStack-terraform-deployment"
+    bucket = "kubestack-terraform-deployment"
     key    = "terraform.tfstate"
     region = "eu-west-2"
   }

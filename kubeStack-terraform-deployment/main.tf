@@ -66,9 +66,9 @@ module "eks_cluster" {
   }
 
   eks_managed_node_groups = {
-    for subnet in module.network.private_subnets: 
+    for subnet in module.network.private_subnets :
     "Primary-${subnet.availability_zone}" => {
-      subnet_ids = [subnet.id]
+      subnet_ids     = [subnet.id]
       name           = var.node_group
       instance_types = var.instance_types
       capacity_type  = var.capacity_type
@@ -98,7 +98,7 @@ module "rancher" {
 
 # Calls the rancher-monitoring module, used to provide us with a system alerting tool.
 module "rancher-monitoring" {
-  source   = "./modules/rancher-monitoring"
+  source = "./modules/rancher-monitoring"
 
   depends_on = [
     module.eks_cluster
@@ -107,7 +107,7 @@ module "rancher-monitoring" {
 
 # Calls the rancher-monitoring-crd module, used to provide us with a system alerting tool CRDs.
 module "rancher-monitoring-crd" {
-  source   = "./modules/rancher-monitoring-crd"
+  source = "./modules/rancher-monitoring-crd"
 
   depends_on = [
     module.eks_cluster
@@ -126,7 +126,7 @@ module "keycloak" {
 
 # Calls the harbor module, used to add software to the EKS Cluster within the AWS deployment
 module "harbor" {
-  source   = "./modules/harbor"
+  source = "./modules/harbor"
 
   depends_on = [
     module.eks_cluster
@@ -135,7 +135,7 @@ module "harbor" {
 
 # Calls the vault module, used to provide us with a Secret management system.
 module "vault" {
-  source   = "./modules/vault"
+  source = "./modules/vault"
 
   depends_on = [
     module.eks_cluster
@@ -159,7 +159,7 @@ module "network" {
 module "ingress" {
   source = "./modules/ingress"
   # Note - We require access from the VPC CIDR Block so that the Network Load Balancer can perform health checks.
-  access_cidrs      = concat(var.cluster_endpoint_public_access_cidrs, var.nginx_additional_access_cidrs, [var.cidr_block, format("%s/32", join(",", module.network.external_nat_ip))])
+  access_cidrs = concat(var.cluster_endpoint_public_access_cidrs, var.nginx_additional_access_cidrs, [var.cidr_block, format("%s/32", join(",", module.network.external_nat_ip))])
 
   tags = local.tags
   depends_on = [
