@@ -167,6 +167,17 @@ module "ingress" {
   ]
 }
 
+# Calls the storage-controller module, which adds an adaptive storage facility to the cluster
+module "storage-controller" {
+  source                        = "./modules/storage-controller"
+  cluster_oidc_provider_arn     = module.eks.oidc_provider_arn
+
+  tags = local.tags
+  depends_on = [
+    module.eks
+  ]
+}
+
 # Resource that holds the information of the kubernets cluster when deployed, used for outputs and bolt-on modules
 resource "kubernetes_config_map" "cluster-info" {
   metadata {
