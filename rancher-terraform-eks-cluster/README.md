@@ -9,7 +9,6 @@ A Rancher EKS Cluster using Helm Charts for deployment - provisioned via IAC (Te
 * An AWS Account with an IAM user capable of creating resources – `AdminstratorAccess`
 * A locally configured AWS profile for the above IAM user
 * Terraform installation - [steps](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-* AWS EC2 key pair - [steps](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
 * Environment Variables for AWS CLI - [steps](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
 * VPC Endpoint Configuration - [article](https://docs.aws.amazon.com/whitepapers/latest/aws-privatelink/what-are-vpc-endpoints.html)
 * Public & Private Subnet Setup - [article](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario2.html)
