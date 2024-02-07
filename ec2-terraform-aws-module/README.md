@@ -1,12 +1,5 @@
 # ec2-terraform-aws-module
 
-
-# Architecture
-
-Enter Image 
-
-**Note:** - The following architecture doesn't reflect all the components that are created by this template. However, it does provide a high-level overview of the core infrastructure that will be created.
-
 # Prerequisites
 * An AWS Account with an IAM user capable of creating resources – `AdminstratorAccess`
 * A locally configured AWS profile for the above IAM user
