@@ -39,7 +39,7 @@ variable "nginx_additional_access_cidrs" {
 }
 
 variable "node_group" {
-  description = "Name of Arcus Instance"
+  description = "Name of Instance"
   type        = string
   default     = "Primary"
 }
