@@ -17,15 +17,7 @@ This section details the deployment and teardown of the three-tier-architecture.
 
     git clone https://github.com/BJWRD/Terraform && cd ec2-ssm-terraform-module
     
-#### 2. Update the vpc_id variable to your own VPC ID - `variables.tf`
-
-    variable "vpc_id" {
-        description = "The VPC to deploy into"
-        type        = string
-        default     = "ENTER HERE"
-    }
-    
-#### 3. Update the s3 bucket name to your own - `versions.tf`
+#### 2. Update the s3 bucket name to your own - `versions.tf`
 
     backend "s3" {
       bucket = "ENTER HERE"
@@ -33,7 +25,7 @@ This section details the deployment and teardown of the three-tier-architecture.
       region = "eu-west-2"
     }
 
-#### 4. Update the Security Group Ingress
+#### 3. Update the Security Group Ingress
     ingress {
         from_port   = 0
         to_port     = 0
@@ -41,23 +33,23 @@ This section details the deployment and teardown of the three-tier-architecture.
         cidr_blocks = [""] # Update to your own current IP Address
     } 
 
-#### 5. AZ & Region Updates
+#### 4. AZ & Region Updates
 
 Finally, update all area's of code which include the AWS Availability Zones & Regions to values that are specific to your own requirements.
 
-#### 6.	Initialise the TF directory
+#### 5.	Initialise the TF directory
 
     terraform init
 
-#### 7.	 Ensure the terraform code is formatted and validated 
+#### 6.	 Ensure the terraform code is formatted and validated 
 
     terraform fmt && terraform validate
 
-#### 8.	Create an execution plan
+#### 7.	Create an execution plan
 
     terraform plan
 
-#### 9.	Execute terraform configuration - Creating the EC2 Infrastructure
+#### 8.	Execute terraform configuration - Creating the EC2 Infrastructure
 
     terraform apply --auto-approve
     
