@@ -12,6 +12,8 @@ To explore the Terraform deployments in this repository, follow these steps:
     cd Terraform
   
 #### 3. Choose one of the available deployments from the list below and follow the instructions provided in their respective directories:
+* [airflow-spark-eks-cluster](https://github.com/BJWRD/Terraform/airflow-spark-eks-cluster): `An EKS Cluster using Airflow/Spark to perform DAG runs on an S3 Bucket - provisioned via Terraform.`
+
 * [ec2-ssm-terraform-module](https://github.com/BJWRD/Terraform/ec2-ssm-terraform-module): `One-zone EC2/NAT Gateway AWS Infrastructure with SSM connectivity- provisioned via Terraform.` 
 
 * [kubeStack-terraform-deployment](https://github.com/BJWRD/Terraform/kubeStack-terraform-deployment): `An EKS Cluster using Rancher, Keycloak, Harbor, Grafana, Prometheus, & Hashicorp Vault Helm Charts for a multi-deployment - provisioned via IAC (Terraform)`
