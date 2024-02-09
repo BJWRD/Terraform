@@ -1,4 +1,4 @@
-# kubeStack-terraform-deployment
+# airflow-spark-eks-cluster
 An EKS Cluster using Airflow/Spark to perform DAG runs on an S3 Bucket - provisioned via IAC (Terraform).
 
 # Prerequisites
