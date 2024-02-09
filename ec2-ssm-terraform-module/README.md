@@ -57,23 +57,16 @@ Finally, update all area's of code which include the AWS Availability Zones & Re
 
     terraform plan
 
-Enter Image
-
 #### 9.	Execute terraform configuration - Creating the EC2 Infrastructure
 
     terraform apply --auto-approve
     
-Enter Image
-
-
 ## Verification Steps 
 
 #### 1. Check AWS Infrastructure
 Check the infrastructure deployment status, by enter the following terraform command -
 
      terraform show
-
-Enter Image
 
 Alternatively, log into the AWS Console and verify your AWS infrastructure deployment from there.
 
